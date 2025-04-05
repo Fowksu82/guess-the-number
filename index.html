@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай число</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Игра: Угадай число</h1>
+        <div id="menu">
+            <p>Счёт: <span id="score">0</span></p>
+            <button onclick="startGame()">Играть</button>
+            <button onclick="openSettings()">Настройки</button>
+            <button onclick="openShop()">Магазин</button>
+            <button onclick="exitGame()">Выход</button>
+        </div>
+        <div id="game" style="display: none;">
+            <p id="instruction">Угадайте число от 1 до <span id="max-number">100</span>:</p>
+            <input type="number" id="user-guess" min="1" max="100" placeholder="Введите число">
+            <button onclick="submitGuess()">Отправить</button>
+            <button onclick="returnToMenu()">Назад</button>
+        </div>
+        <div id="settings" style="display: none;">
+            <h2>Настройки</h2>
+            <button onclick="setDifficulty(50)">Легкий (1-50)</button>
+            <button onclick="setDifficulty(100)">Средний (1-100)</button>
+            <button onclick="setDifficulty(150)">Сложный (1-150)</button>
+            <button onclick="returnToMenu()">Назад</button>
+        </div>
+        <div id="shop" style="display: none;">
+            <h2>Магазин</h2>
+            <p>Текущее имя робота: <span id="robot-name">X</span></p>
+            <button onclick="changeRobotName()">Сменить имя на VIP (за 4 очка)</button>
+            <button onclick="returnToMenu()">Назад</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
