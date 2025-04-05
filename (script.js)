@@ -1,0 +1,52 @@
+// Переменные для игрока
+let points = 100; // Количество очков игрока
+let playerName = "Игрок";
+
+// Отображение текущего имени и очков
+function updateStatus() {
+    const status = document.getElementById('status');
+    status.textContent = `Имя: ${playerName}, Очки: ${points}`;
+}
+
+// Покупка предмета в магазине
+function buyVIP() {
+    const result = document.getElementById('result');
+
+    if (points >= 50) {
+        points -= 50; // Списываем очки
+        playerName = "VIP"; // Меняем имя
+        result.textContent = "Поздравляем, вы стали VIP!";
+        result.style.color = "green";
+        updateStatus();
+    } else {
+        result.textContent = "Недостаточно очков для покупки VIP!";
+        result.style.color = "red";
+    }
+}
+
+// Запуск игры
+function handleGuess() {
+    const guessInput = document.getElementById('guessInput');
+    const result = document.getElementById('result');
+
+    const userGuess = Number(guessInput.value);
+
+    if (userGuess === randomNumber) {
+        points += 20; // Добавляем очки за правильный ответ
+        result.textContent = "Поздравляем! Вы угадали число!";
+        result.style.color = "green";
+        updateStatus();
+    } else if (userGuess < randomNumber) {
+        result.textContent = "Слишком мало, попробуйте ещё раз!";
+        result.style.color = "orange";
+    } else {
+        result.textContent = "Слишком много, попробуйте ещё раз!";
+        result.style.color = "red";
+    }
+}
+
+// Генерация случайного числа
+const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+// Инициализация статуса игрока при загрузке страницы
+window.onload = updateStatus;
